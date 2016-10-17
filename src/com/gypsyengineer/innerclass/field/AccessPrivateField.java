@@ -5,6 +5,10 @@ import java.lang.reflect.Method;
 public class AccessPrivateField {
 
     public static void main(String[] args) throws Exception {
+        go();
+    }
+
+    public static void go() throws Exception {
         Outer t = new Outer();
         Method m = Outer.class.getDeclaredMethod(
                 "access$002", Outer.class, int.class);
