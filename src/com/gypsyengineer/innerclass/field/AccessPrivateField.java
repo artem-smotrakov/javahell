@@ -5,6 +5,10 @@ import java.lang.reflect.Method;
 public class AccessPrivateField {
 
     public static void main(String[] args) throws Exception {
+        if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new SecurityManager());
+        }
+
         go();
     }
 
