@@ -13,7 +13,12 @@ import java.net.URLClassLoader;
  *
  *      mkdir -p classes
  *      javac -d classes src/com/gypsyengineer/innerclass/field/*.java
+ *
+ *      # run without security manager
  *      java -classpath classes com.gypsyengineer.innerclass.field.AccessPrivateField
+ *
+ *      # run with security manager
+ *      java -classpath classes com.gypsyengineer.innerclass.field.AccessPrivateField security
  */
 public class AccessPrivateField {
 
@@ -37,7 +42,9 @@ public class AccessPrivateField {
         URLClassLoader cl = new URLClassLoader(urls, NO_PARENT_CLASSLOADER);
 
         // Make sure that we run with security manager
-        if (System.getSecurityManager() == null) {
+        if (args.length > 0 && "security".equals(args[0])
+                && System.getSecurityManager() == null) {
+
             System.setSecurityManager(new SecurityManager());
         }
 
