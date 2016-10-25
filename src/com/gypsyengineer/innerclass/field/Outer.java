@@ -14,8 +14,8 @@ public class Outer {
 
     public class Inner {
 
-        public void go(int value) {
-            secret = value;
+        public void go() {
+            secret = 42;
         }
     }
 
