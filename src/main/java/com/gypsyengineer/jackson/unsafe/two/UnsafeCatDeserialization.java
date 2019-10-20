@@ -2,7 +2,7 @@ package com.gypsyengineer.jackson.unsafe.two;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class InsecureCatDeserialization {
+public class UnsafeCatDeserialization {
 
     private static final String command =
             System.getProperty("os.name").toLowerCase().contains("windows")
