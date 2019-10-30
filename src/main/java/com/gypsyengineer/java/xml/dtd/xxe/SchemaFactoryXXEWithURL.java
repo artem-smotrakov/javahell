@@ -94,7 +94,8 @@ public class SchemaFactoryXXEWithURL {
                     + "]>\n"
                     + "<foo>&xxe;</foo>"
                     + "<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n"
-                    + "\n" + "<xs:element name=\"shiporder\">\n"
+                    + "\n"
+                    + "<xs:element name=\"shiporder\">\n"
                     + "  <xs:complexType>\n"
                     + "    <xs:sequence>\n"
                     + "      <xs:element name=\"orderperson\" type=\"xs:string\"/>\n"
@@ -124,6 +125,11 @@ public class SchemaFactoryXXEWithURL {
                     + "</xs:element>\n"
                     + "\n"
                     + "</xs:schema>", server.url());
+
+            if (server.accepted()) {
+                throw new IllegalArgumentException(
+                    "The server should not have been reached here! Something is wrong with the test!");
+            }
 
             unsafeValidate(doc, xsd);
         } catch (Exception e) {
